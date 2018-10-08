@@ -18,7 +18,11 @@ function ucWord(sentence){
 }
 
 function isEmail(mayBeEmail){
-    return /([a-z0-9.]{3,})@([a-z]{3,}).([a-z]{3,})/.test(mayBeEmail.toLowerCase());
+    return /([a-z0-9.]{3,})@([a-z]{3,})[.]([a-z]{3,})/.test(mayBeEmail.toLowerCase());
+}
+
+function isUrl(mayBeUrl){
+    return /([http://]|[a-z0-9.]{1,})[.]([a-z]{1,})/.test(mayBeUrl.toLowerCase());
 }
 
 
@@ -40,5 +44,8 @@ runFunction(ucFirst, ['', 's', 'comes', 'tomorrow never comes']);
 runFunction(ucWord, ['', 's', 'comes', 'tomorrow never comes']);
 
 //Run isEmail() function
-runFunction(isEmail, ['grimels.ua@gmail.com', 'g.e$@gmail.com', 'ttt@gm.com', 'qqq@gmail.c']);
+runFunction(isEmail, ['html@gmail.com', 'h@g.com', 'ttt@gm.com', 'html@gmail']);
+
+//Run isUrl() function
+runFunction(isUrl, ['http://html.net', 'html.net', 'html', 'html@gmail']);
 
