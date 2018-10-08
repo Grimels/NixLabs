@@ -10,8 +10,22 @@ function findArray(arr1, arr2){
     return res;
 }
 
+function equalizer(arr){
+    let avg_length = 0;
+    arr.forEach((element) => {
+        avg_length += element.length;    
+    });
+    avg_length /= arr.length;
+    let res = [];
+    
+    arr.forEach((element) => {
+        res.push(element[0].repeat(avg_length));
+    });
+    return res;
+}
+
 //Run findArray() function
-let findArrayArgs = [
+const findArrayArgs = [
     [1,2,3], [],                                                     // [ ]
     [], [2,1,3],                                                     // [ ]
     [], [],                                                          // [ ]
@@ -23,4 +37,14 @@ let findArrayArgs = [
 
 for (let i = 0; i < findArrayArgs.length; i+=2) {
     console.log(findArray(findArrayArgs[i], findArrayArgs[i+1]));
+}
+
+//Run equalizer() function
+const equalizerArgs = [
+    ['qqqq', 'wwwwwww', 't'],      // 4
+    ['r', 'hhhhhhh','wwwwwww'],    // 5
+    ['t', 'y','rrrrrrrrrrrrrrrrr'] // 6
+]
+for (let i = 0; i < equalizerArgs.length; i++) {
+    console.log(equalizer(equalizerArgs[i]));
 }
