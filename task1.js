@@ -29,6 +29,10 @@ function isDate(mayBeDate){
     return /([0-9]{2})([.]|[-]|[/]{1})([0-9]{2})([.]|[-]|[/]{1})([0-9]{4})/.test(mayBeDate.toLowerCase());
 }
 
+function isPhoneNumber(mayBePhoneNumber){
+    return /([+380]{4})([0-9]{2})([0-9]{7})/.test(mayBePhoneNumber.toLowerCase());
+}
+
 function runFunction(f, args){
     console.log(`*****Run ${f.name}() function*****`);
     args.forEach((val) => {
@@ -54,3 +58,7 @@ runFunction(isUrl, ['http://html.net', 'html.net', 'html', 'html@gmail']);
 
 //Run isDate() function
 runFunction(isDate, ['trewq', '29.10.1998', '12/02/2012', '23-12-1992', '10,22,2222']);
+
+//Run isPhoneNumber() function
+runFunction(isPhoneNumber, ['11111111', '+380889574438', 'qewqdf', '+38088957443']);
+
