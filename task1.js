@@ -25,6 +25,9 @@ function isUrl(mayBeUrl){
     return /([http://]|[a-z0-9.]{1,})[.]([a-z]{1,})/.test(mayBeUrl.toLowerCase());
 }
 
+function isDate(mayBeDate){
+    return /([0-9]{2})([.]|[-]|[/]{1})([0-9]{2})([.]|[-]|[/]{1})([0-9]{4})/.test(mayBeDate.toLowerCase());
+}
 
 function runFunction(f, args){
     console.log(`*****Run ${f.name}() function*****`);
@@ -49,3 +52,5 @@ runFunction(isEmail, ['html@gmail.com', 'h@g.com', 'ttt@gm.com', 'html@gmail']);
 //Run isUrl() function
 runFunction(isUrl, ['http://html.net', 'html.net', 'html', 'html@gmail']);
 
+//Run isDate() function
+runFunction(isDate, ['trewq', '29.10.1998', '12/02/2012', '23-12-1992', '10,22,2222']);
