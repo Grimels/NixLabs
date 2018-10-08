@@ -17,6 +17,28 @@ function ucWord(sentence){
     }).join(' ');
 }
 
-console.log(`reverse('Hello World!') => ${reverse('Hello World!')}`);
-console.log(`ucFirst('tomorrow never comes') => ${ucFirst('tomorrow never comes')}`);
-console.log(`ucWord('tomorrow never comes') => ${ucWord('tomorrow never comes')}`);
+function isEmail(mayBeEmail){
+    return /([a-z0-9.]{3,})@([a-z]{3,}).([a-z]{3,})/.test(mayBeEmail.toLowerCase());
+}
+
+
+function runFunction(f, args){
+    console.log(`*****Run ${f.name}() function*****`);
+    args.forEach((val) => {
+        console.log(`${f.name}(${val}) => ${f(val)}`);
+    });
+    console.log('\n');
+}
+
+//Run reverse() function
+runFunction(reverse, ['', 'H', 'Hello World!']);
+
+//Run ucFirst() function
+runFunction(ucFirst, ['', 's', 'comes', 'tomorrow never comes']);
+
+//Run ucWord() function
+runFunction(ucWord, ['', 's', 'comes', 'tomorrow never comes']);
+
+//Run isEmail() function
+runFunction(isEmail, ['grimels.ua@gmail.com', 'g.e$@gmail.com', 'ttt@gm.com', 'qqq@gmail.c']);
+
