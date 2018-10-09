@@ -2,6 +2,11 @@
 
 by Vladislav Maliarenko, National Technical University "Kharkiv Polytechnic Institute", group KN-26.
 
+<ul>
+  <li>[lab 1](###lab-1)</li>  
+</ul>
+
+(###lab-1)
 Tasks: <br/>
 Задача 1:<br/>
 Написать собственные функции для работы со строками и числами:<br/>
