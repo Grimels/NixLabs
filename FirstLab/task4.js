@@ -554,19 +554,42 @@ function filterArrays(arr1, arr2){
         if(item.tags.includes('velit') && item.tags.includes('anim')) return true;
     }
 
-    arr1.forEach((item) => {
-        if(conditions(item)){
-            result.push(item);
-        }
-    });
-    
-    arr2.forEach((item) => {
-        if(conditions(item)){
-            result.push(item);
-        }
-    });
+    let forEachDRY = (arr) => {
+        arr.forEach((item) => {
+            if(conditions(item)){
+                result.push(item);
+            }
+        });
+    }
+
+    forEachDRY(arr1);
+    forEachDRY(arr2);
 
     return result;
 }
 
+function uniqueTags(arr1, arr2){
+    let resultTags = [];
+    let tags = [];
+    let forEachDRY = (arr) => {
+        arr.forEach((item) => {
+            item.tags.forEach((tag) => {
+                if(!(tags.includes(tag))) {
+                    tags.push(tag);
+                    resultTags.push({
+                        id: resultTags.length,
+                        tag: tag
+                    });
+                }
+            });
+        });
+    }
+
+    forEachDRY(arr1);
+    forEachDRY(arr2);
+
+    return resultTags;
+}
+
 console.log(filterArrays(arr1, arr2));
+console.log(uniqueTags(arr1, arr2));
