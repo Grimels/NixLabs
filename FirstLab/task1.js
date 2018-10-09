@@ -18,7 +18,7 @@ function ucWord(sentence){
 }
 
 function isEmail(mayBeEmail){
-    return /([a-z0-9.]{3,})@([a-z]{3,})[.]([a-z]{3,})/.test(mayBeEmail.toLowerCase());
+    return /([a-z0-9.]{3,})@([a-z]{3,})[.]([a-z]{2,})/.test(mayBeEmail.toLowerCase());
 }
 
 function isUrl(mayBeUrl){
