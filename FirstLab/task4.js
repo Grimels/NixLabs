@@ -612,7 +612,11 @@ function copy(...manyArrays){
     return result;
 }
 
-console.log(filterArrays(arr1, arr2));
-console.log(uniqueTags(arr1, arr2));
+console.log("********filterArrays*******\n"+filterArrays(arr1, arr2));
+console.log("********uniqueTags*******\n"+uniqueTags(arr1, arr2));
 
-console.log(copy(arr1, arr2));
+console.log("********copy********\n");
+let newArr = copy(arr1, arr2);
+console.log(newArr);
+console.log(newArr !== arr1);
+console.log(newArr[0] !== arr1[0]);
