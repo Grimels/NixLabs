@@ -3,10 +3,10 @@
 by Vladislav Maliarenko, National Technical University "Kharkiv Polytechnic Institute", group KN-26.
 
 <ul>
-  <li>[lab 1](###lab-1)</li>  
+  <li><a href="#lab-1">Lab 1</a></li>  
 </ul>
 
-(###lab-1)
+<h1 id="lab-1">Lab 1 </h1><br/>
 Tasks: <br/>
 Задача 1:<br/>
 Написать собственные функции для работы со строками и числами:<br/>
