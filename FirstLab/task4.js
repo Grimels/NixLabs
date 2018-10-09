@@ -591,5 +591,28 @@ function uniqueTags(arr1, arr2){
     return resultTags;
 }
 
+function copyOf2(arr1, arr2){
+    let result = [];
+    
+    arr1.forEach((item) => {
+        result.push(Object.assign({}, item));
+    });
+    arr2.forEach((item) => {
+        result.push(Object.assign({}, item));
+    });
+
+    return result;
+}
+
+function copy(...manyArrays){
+    let result = [];
+    for (let i = 0; i < manyArrays.length-1; i++) {
+        result.push(copyOf2(manyArrays[i], manyArrays[++i]));
+    }
+    return result;
+}
+
 console.log(filterArrays(arr1, arr2));
 console.log(uniqueTags(arr1, arr2));
+
+console.log(copy(arr1, arr2));
