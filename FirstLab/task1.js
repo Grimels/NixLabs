@@ -18,7 +18,7 @@ function ucWord(sentence){
 }
 
 function isEmail(mayBeEmail){
-    return /([a-z0-9.]{3,})@([a-z]{3,})[.]([a-z]{3,})/.test(mayBeEmail.toLowerCase());
+    return  /^([a-z]{1,1})([a-z0-9_\.-]{2,})+@([a-z]{3,})?\.([a-z]{2,})/.test(mayBeEmail.toLowerCase());
 }
 
 function isUrl(mayBeUrl){
@@ -26,11 +26,11 @@ function isUrl(mayBeUrl){
 }
 
 function isDate(mayBeDate){
-    return /([0-9]{2})([.]|[-]|[/]{1})([0-9]{2})([.]|[-]|[/]{1})([0-9]{4})/.test(mayBeDate.toLowerCase());
+    return /([0-9]{2})([.]{1})([0-9]{2})([.]{1})([0-9]{4})|([0-9]{2})([-]{1})([0-9]{2})([-]{1})([0-9]{4})|([0-9]{2})([/]{1})([0-9]{2})([/]{1})([0-9]{4})/.test(mayBeDate.toLowerCase());
 }
 
 function isPhoneNumber(mayBePhoneNumber){
-    return /([+380]{4})([0-9]{2})([0-9]{7})/.test(mayBePhoneNumber.toLowerCase());
+    return /^\+([380]{3})([0-9]{9})/.test(mayBePhoneNumber.toLowerCase());
 }
 
 function runFunction(f, args){
