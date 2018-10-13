@@ -615,8 +615,8 @@ function copyOf2(arr1, arr2){
 
 function copy(...manyArrays){
     let result = [];
-    for (let i = 0; i < manyArrays.length-1; i++) {
-        result.push(copyOf2(manyArrays[i], manyArrays[++i]));
+    for (let i = 0; i < manyArrays.length; i++) {
+        result.push(copyOf2(result, manyArrays[i]));
     }
     return result;
 }
