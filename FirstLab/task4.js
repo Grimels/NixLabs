@@ -546,11 +546,20 @@ const arr2 = [
 
 function filterArrays(arr1, arr2){
     let result = [];
+    let convertBalance = (item) => {
+      let res = '';
+      for(let i = 0; i < item.balance.length; i++){
+        if(/[0-9.]/.test(Number(item.balance[i]))){
+          res += item.balance[i];
+        }
+      }
+      return res;
+    }
     let conditions = (item) => {
-        if(item.balance <= 2000) return false;
         if(item.age >= 30) return false;
         if(!(item.eyeColor === 'blue' || item.eyeColor === 'brown')) return false;
-
+        if(convertBalance(item) <= 2000) return false;
+        
         if(item.tags.includes('velit') && item.tags.includes('anim')) return true;
     }
 
@@ -612,7 +621,11 @@ function copy(...manyArrays){
     return result;
 }
 
-console.log("********filterArrays*******\n"+filterArrays(arr1, arr2));
+console.log("********filterArrays*******");
+let filtered = filterArrays(arr1, arr2);
+filtered.forEach((item) => {
+  console.log(item);
+})
 console.log("********uniqueTags*******\n"+uniqueTags(arr1, arr2));
 
 console.log("********copy********\n");
