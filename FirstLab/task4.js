@@ -555,19 +555,13 @@ function filterArrays(arr1, arr2){
       }
       return res;
     }
-    let conditions = (item) => {
-        if(item.age >= 30) return false;
-        if(!(item.eyeColor === 'blue' || item.eyeColor === 'brown')) return false;
-        if(convertBalance(item) <= 2000) return false;
-        
-        if(item.tags.includes('velit') && item.tags.includes('anim')) return true;
-    }
 
     let forEachDRY = (arr) => {
         arr.forEach((item) => {
-            if(conditions(item)){
-                result.push(item);
-            }
+          if(item.age >= 30) return;
+          if(!(item.eyeColor === 'blue' || item.eyeColor === 'brown')) return;
+          if(convertBalance(item) <= 2000) return;
+          if(item.tags.includes('velit') && item.tags.includes('anim')) result.push(item);
         });
     }
 
@@ -580,22 +574,25 @@ function filterArrays(arr1, arr2){
 function uniqueTags(arr1, arr2){
     let resultTags = [];
     let tags = [];
-    let forEachDRY = (arr) => {
-        arr.forEach((item) => {
-            item.tags.forEach((tag) => {
-                if(!(tags.includes(tag))) {
-                    tags.push(tag);
-                    resultTags.push({
-                        id: resultTags.length,
-                        tag: tag
-                    });
-                }
+
+    let getUniqueTags = (obj) => {
+      obj.tags.forEach((tag) => {
+        if(!(tags.includes(tag))) {
+            tags.push(tag);
+            resultTags.push({
+                id: resultTags.length,
+                tag: tag
             });
-        });
+        }
+      });
     }
 
-    forEachDRY(arr1);
-    forEachDRY(arr2);
+    arr1.forEach((item) => {
+      getUniqueTags(item);
+    });
+    arr2.forEach((item) => {
+      getUniqueTags(item);
+    });
 
     return resultTags;
 }
@@ -626,7 +623,8 @@ let filtered = filterArrays(arr1, arr2);
 filtered.forEach((item) => {
   console.log(item);
 })
-console.log("********uniqueTags*******\n"+uniqueTags(arr1, arr2));
+console.log("********uniqueTags*******\n");
+uniqueTags(arr1, arr2).forEach(item => console.log(item));
 
 console.log("********copy********\n");
 let newArr = copy(arr1, arr2);
