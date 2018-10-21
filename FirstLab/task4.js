@@ -597,23 +597,20 @@ function uniqueTags(arr1, arr2){
     return resultTags;
 }
 
-function copyOf2(arr1, arr2){
-    let result = [];
-    
-    arr1.forEach((item) => {
-        result.push(Object.assign({}, item));
-    });
-    arr2.forEach((item) => {
-        result.push(Object.assign({}, item));
-    });
+function clone(arr){
+  let result = [];
 
-    return result;
+  arr.forEach((item) => {
+    result.push(Object.assign({}, item));
+  });
+
+  return result;
 }
 
 function copy(...manyArrays){
     let result = [];
     for (let i = 0; i < manyArrays.length; i++) {
-        result.push(copyOf2(result, manyArrays[i]));
+        result = result.concat(clone(manyArrays[i]));
     }
     return result;
 }
@@ -622,7 +619,8 @@ console.log("********filterArrays*******");
 let filtered = filterArrays(arr1, arr2);
 filtered.forEach((item) => {
   console.log(item);
-})
+});
+
 console.log("********uniqueTags*******\n");
 uniqueTags(arr1, arr2).forEach(item => console.log(item));
 
