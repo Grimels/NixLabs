@@ -1,5 +1,3 @@
-var stack_callbacks = [], stack_delays = [];
-var min = null;
 function myOwnSetTimeOut(callback, delay, ...params) {
     let date = new Date();
     let now = date.getTime();
