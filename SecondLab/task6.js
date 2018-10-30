@@ -1,4 +1,4 @@
-function myOwnSetTimeOut(callback, delay, ...params) {
+function myOwnSetTimeout(callback, delay, ...params) {
     let date = new Date();
     let now = date.getTime();
     let when = now + delay;
@@ -15,4 +15,20 @@ let myTestFunc = function(param1, param2) {
     console.log(param1, param2);
 }
 
-myOwnSetTimeOut(myTestFunc, 7000, 5, 2);
+//myOwnSetTimeout(myTestFunc, 5000, 3, 2);
+
+function User(name) {
+    this.name = name;
+    this.sayMyName = function() {
+        console.log('Hi, my name is ' + name);
+    }
+    this.sayMyNameTimeout = function (delay) {
+        myOwnSetTimeout(this.sayMyName, delay);
+    }
+}
+
+let user1 = new User('John');
+let user2 = new User('Walter');
+
+user1.sayMyNameTimeout(100);
+user2.sayMyNameTimeout(400);
